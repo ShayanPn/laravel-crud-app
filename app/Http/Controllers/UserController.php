@@ -15,6 +15,7 @@ class UserController extends Controller
             'password' => 'required'
         ]);
         if(auth()->attempt($incoommingFields)){
+            session()->regenerate();
             return 'User LoggedIn Successfully';
         }else{
             return 'Email / Password Incorrect';

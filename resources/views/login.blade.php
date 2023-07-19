@@ -1,4 +1,4 @@
-<x-layout>
+<x-noside>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
@@ -71,4 +71,4 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 </body>
 </html>
-</x-layout>
+</x-noside>

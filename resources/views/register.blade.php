@@ -1,4 +1,4 @@
-<x-layout>
+<x-noside>
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
@@ -83,4 +83,4 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 </body>
 </html>
-</x-layout>
+</x-noside>
