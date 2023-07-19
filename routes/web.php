@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+// Dashboard Route
+Route::get('/',[MainController::class,'showDashboardPage']);
+// Login & Logout Route
+Route::get('/login',[MainController::class,'showLoginPage']);
+Route::get('/register',[MainController::class,'showRegisterPage']);
