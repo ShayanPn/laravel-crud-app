@@ -50,7 +50,7 @@
         <div class="row d-flex flex-row justify-content-center">
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block text-center">Register</button>
+            <button type="submit" class="btn bg-gradient-primary btn-block text-center">Register</button>
           </div>
           <!-- /.col -->
         </div>

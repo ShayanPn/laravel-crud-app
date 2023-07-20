@@ -5,7 +5,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                  <button data-toggle="modal" data-target="#modal-xl" class="text-white btn btn-warning"><i class="fa fa-plus-circle" aria-hidden="true"></i><span class="mx-2">ADD Record</span></button>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -16,6 +16,7 @@
                       <th>Email</th>
                       <th>Job</th>
                       <th>Age</th>
+                      <th>Created At</th>
                       <th>Functions</th>
                     </tr>
                     </thead>
@@ -26,8 +27,34 @@
                       <td>{{$record->email}}</td>
                       <td>{{$record->job}}</td>
                       <td>{{$record->age}}</td>
-                      <td>X</td>
+                      <td>{{$record->created_at}}</td>
+                      <td><a href="/record/{{$record->id}}"><i class="nav-icon fa fa-eye" aria-hidden="true"></i></a><a href="/record/update/{{$record->id}}" class="mx-3 text-success" href=""><i class="nav-icon fa fa-wrench" aria-hidden="true"></i></a><a type="button" data-toggle="modal" data-target="#modal-sm" type="submit" class="text-danger" href=""><i class="nav-icon fa fa-trash" aria-hidden="true"></i></a></td>
                     </tr>
+                    <div class="modal fade" id="modal-sm">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-header bg-danger">
+                            <h4 class="modal-title">Delete Record</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Are You Want To Delete This Record?</p>
+                          </div>
+                          <div class="modal-footer justify-content-between">
+                            <form action="/record/delete/{{$record->id}}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger">Yes,Delete It</button>
+                          </form>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
                     @endforeach
                     </tbody>
                     <tfoot>
@@ -36,6 +63,7 @@
                         <th>Email</th>
                         <th>Job</th>
                         <th>Age</th>
+                        <th>Created At</th>
                         <th>Functions</th>
                     </tr>
                     </tfoot>
@@ -54,4 +82,77 @@
         </div>
         <!-- /.container-fluid -->
       </section>
+
+      {{-- modal-xl --}}
+      <div class="modal fade" id="modal-xl">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="card card-primary">
+                    <div class="card-header">
+                      <h3 class="card-title">Create Record</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form action="" method="POST">
+                        @csrf
+                        @method('POST')
+                      <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Name</label>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter Name" name="name">
+                                    @error('name') <p class="badge bg-danger">{{$message}}</p> @enderror
+                                  </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email Address</label>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" placeholder="Enter email" name="email">
+                                    @error('email') <p class="badge bg-danger">{{$message}}</p> @enderror
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Job</label>
+                                    <input type="text" class="form-control @error('job') is-invalid @enderror" placeholder="Enter Job" name="job">
+                                    @error('job') <p class="badge bg-danger">{{$message}}</p> @enderror
+                                  </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Age</label>
+                                    <input type="text" class="form-control @error('age') is-invalid @enderror" placeholder="Enter Age" name="age">
+                                    @error('age') <p class="badge bg-danger">{{$message}}</p> @enderror
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Address</label>
+                            <input type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Enter Address" name="address">
+                            @error('address') <p class="badge bg-danger">{{$message}}</p> @enderror
+                          </div>
+                      </div>
+                      <!-- /.card-body -->
+            
+                      <div class="card-footer d-flex flex-row justify-content-center">
+                        <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+
 </x-layout>
