@@ -28,34 +28,11 @@
                       <td>{{$record->job}}</td>
                       <td>{{$record->age}}</td>
                       <td>{{$record->created_at}}</td>
-                      <td><a href="/record/{{$record->id}}"><i class="nav-icon fa fa-eye" aria-hidden="true"></i></a><a href="/record/update/{{$record->id}}" class="mx-3 text-success" href=""><i class="nav-icon fa fa-wrench" aria-hidden="true"></i></a><a type="button" data-toggle="modal" data-target="#modal-sm" type="submit" class="text-danger" href=""><i class="nav-icon fa fa-trash" aria-hidden="true"></i></a></td>
+                      <td><a  class="text-primary" href="/record/{{$record->id}}"><i class="nav-icon fa fa-eye" aria-hidden="true"></i></a><a  class="mx-3 text-success" href="/record/update/{{$record->id}}"><i class="nav-icon fa fa-wrench" aria-hidden="true"></i></a><a class="text-danger" href="/record/delete/{{$record->id}}"><i class="nav-icon fa fa-trash" aria-hidden="true"></i></a></td>
                     </tr>
-                    <div class="modal fade" id="modal-sm">
-                      <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                          <div class="modal-header bg-danger">
-                            <h4 class="modal-title">Delete Record</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <p>Are You Want To Delete This Record?</p>
-                          </div>
-                          <div class="modal-footer justify-content-between">
-                            <form action="/record/delete/{{$record->id}}" method="POST">
-                              @csrf
-                              @method('DELETE')
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-danger">Yes,Delete It</button>
-                          </form>
-                          </div>
-                        </div>
-                        <!-- /.modal-content -->
-                      </div>
-                      <!-- /.modal-dialog -->
-                    </div>
                     @endforeach
+
+                    
                     </tbody>
                     <tfoot>
                     <tr>

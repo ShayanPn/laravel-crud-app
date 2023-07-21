@@ -1,6 +1,6 @@
 <x-layout>
     <div class="container">
-        <div class="card card-primary">
+        <div class="card card-success">
             <div class="card-header">
               <h3 class="card-title">Create Record</h3>
             </div>

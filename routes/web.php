@@ -22,6 +22,7 @@ Route::post('/create-record',[RecordController::class,'createRecordFunc']);
 Route::get('/record/{record}',[RecordController::class,'singleViewFunc']);
 Route::get('/record/update/{record}',[RecordController::class,'showUpdateRecord']);
 Route::put('/record/update/{record}',[RecordController::class,'updateRecordFunc'])->name('updateRecord');
-Route::delete('/record/delete/{records}',[RecordController::class,'deleteRecordFunc']);
+Route::get('/record/delete/{record}',[RecordController::class,'showDeletePage']);
+Route::delete('/record/delete/{record}',[RecordController::class,'deleteRecordFunc'])->name('deleterec');
 
 

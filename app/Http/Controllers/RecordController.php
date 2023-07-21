@@ -9,10 +9,16 @@ class RecordController extends Controller
 {
 
     // Delete Record Function
-    public function deleteRecordFunc(Record $records){
-        $records->delete();
-        return back();
+    public function deleteRecordFunc(Record $record){
+        $record->delete();
+        return redirect('/records');
     }
+
+    // Show Delete Page
+    public function showDeletePage(Record $record){
+        return view('delete-record',['record' => $record]);
+    }
+
     // Update Record Function
     public function updateRecordFunc(Request $request,Record $record){
         $incommingFields = $request->validate([
