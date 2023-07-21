@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[MainController::class,'showDashboardPage'])->name('Dashboard');
 // Login & Logout Routes
 Route::get('/login',[MainController::class,'showLoginPage']);
-Route::get('/register',[MainController::class,'showRegisterPage']);
+Route::get('/register',[MainController::class,'showRegisterPage'])->name('register');
 Route::post('/register',[UserController::class,'registerFunc']);
 Route::post('/login',[UserController::class,'loginFunc']);
 

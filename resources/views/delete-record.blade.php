@@ -14,11 +14,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <span>Are You Want To Delete Record {{$record->id}}?</span>
-                                <button type="submit" class="btn btn-danger">Yes,Delete It</button>
-                                <a class="btn btn-warning" href="{{route('Records')}}">No,Take Me Back</a>
+                                <h4>Are You Want To Delete Record <span class="badge bg-primary rounded-0">{{$record->id}}</span>?</h4>
                             </div>
+
                         </div>
+                    </div>
+                    <div class="row">
+                        <button type="submit" class="btn btn-danger mx-2">Yes,Delete It</button>
+                        <a class="btn btn-warning" href="{{route('Records')}}">No,Take Me Back</a>
                     </div>
                 </div>
 

@@ -14,7 +14,7 @@ class MainController extends Controller
 
     // Show Records Page
     public function showRecordPage(){
-        $records = Record::all();
+        $records = Record::orderBy('created_at','desc')->paginate(5);
         return view('records',['records' => $records]);
     }
 

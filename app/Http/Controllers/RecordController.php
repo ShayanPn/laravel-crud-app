@@ -11,7 +11,7 @@ class RecordController extends Controller
     // Delete Record Function
     public function deleteRecordFunc(Record $record){
         $record->delete();
-        return redirect('/records');
+        return redirect('/records')->with('success','Record Succesfully Deleted');
     }
 
     // Show Delete Page
@@ -52,6 +52,6 @@ class RecordController extends Controller
             'age' => 'required'
         ]);
         Record::create($incommingFields);
-        return 'Record Created Successfully';
+        return redirect('/records')->with('success','Record Created Successfully');
     }
 }

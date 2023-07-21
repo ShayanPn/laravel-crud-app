@@ -46,6 +46,9 @@
                     </tfoot>
                   </table>
                 </div>
+                <div class="d-flex flex-row justify-content-center">
+                  {{$records->links()}}
+                </div>
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->

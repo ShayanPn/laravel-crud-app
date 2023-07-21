@@ -126,150 +126,8 @@
                   </p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Layout Options
-                    <i class="fas fa-angle-left right"></i>
-                    <span class="badge badge-info right">6</span>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="pages/layout/top-nav.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Top Navigation</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Top Navigation + Sidebar</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/boxed.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Boxed</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Fixed Sidebar</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Fixed Navbar</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/fixed-footer.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Fixed Footer</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Collapsed Sidebar</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-circle nav-icon"></i>
-                  <p>Level 1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-circle"></i>
-                  <p>
-                    Level 1
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Level 2</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>
-                        Level 2
-                        <i class="right fas fa-angle-left"></i>
-                      </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="#" class="nav-link">
-                          <i class="far fa-dot-circle nav-icon"></i>
-                          <p>Level 3</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link">
-                          <i class="far fa-dot-circle nav-icon"></i>
-                          <p>Level 3</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="#" class="nav-link">
-                          <i class="far fa-dot-circle nav-icon"></i>
-                          <p>Level 3</p>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Level 2</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-circle nav-icon"></i>
-                  <p>Level 1</p>
-                </a>
-              </li>
-              <li class="nav-header">LABELS</li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-danger"></i>
-                  <p class="text">Important</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-warning"></i>
-                  <p>Warning</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon far fa-circle text-info"></i>
-                  <p>Informational</p>
-                </a>
-              </li>
+
+
             </ul>
           </nav>
           <!-- /.sidebar-menu -->
@@ -277,6 +135,7 @@
         <!-- /.sidebar -->
       </aside>
     
+
     
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -297,8 +156,16 @@
           </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-    
 
+        @if(session()->has('success'))
+        <div class="col-md-4 position-absolute show-alert" style="z-index: 9999 !important;top:5px !important;right:5px;">
+          <div class="alert alert-{{session()->has('success') ? 'success' : 'danger'}} alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h5><i class="icon fas fa-ban"></i>Alert!</h5>
+            <b>{{session('success')}}</b>
+          </div>
+        </div>
+        @endif
 
 {{$slot}}
 
@@ -333,8 +200,10 @@ All rights reserved.
 </div>
 <!-- ./wrapper -->
 
+
 <!-- jQuery -->
 <script src="{{url('plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{url('dist/js/alert.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{url('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
