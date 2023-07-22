@@ -91,7 +91,7 @@
         <!-- Brand Logo -->
         <a href="index3.html" class="brand-link">
           <img src="{{url('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-          <span class="brand-text font-weight-light">AdminLTE 3</span>
+          <span class="brand-text font-weight-light">LaravelCRUD</span>
         </a>
     
         <!-- Sidebar -->
@@ -109,7 +109,7 @@
           <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
               <!-- Add icons to the links using the .nav-icon class
-                   with font-awesome or any other icon font library -->
+                   with font-awesome or any other icon font library -->   
               <li class="nav-item">
                 <a href="{{route('Dashboard')}}" class="nav-link {{ Route::is('Dashboard') ? 'active' : ''}} ">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -118,6 +118,14 @@
                   </p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('users')}}" class="nav-link {{ Route::is('users') ? 'active' : ''}} ">
+                  <i class="nav-icon fa fa-users" aria-hidden="true"></i>
+                  <p>
+                    Users
+                  </p>
+                </a>
+              </li>  
               <li class="nav-item">
                 <a href="{{route('Records')}}" class="nav-link {{ Route::is('Records') ? 'active' : ''}}">
                   <i class="nav-icon fa fa-address-book" aria-hidden="true"></i>
@@ -144,12 +152,11 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">{{Route::currentRouteName()}}</h1>
+                <h1 class="m-0">{{ucfirst(Route::currentRouteName())}}</h1>
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Dashboard v1</li>
+
                 </ol>
               </div><!-- /.col -->
             </div><!-- /.row -->
@@ -161,8 +168,17 @@
         <div class="col-md-4 position-absolute show-alert" style="z-index: 9999 !important;top:5px !important;right:5px;">
           <div class="alert alert-{{session()->has('success') ? 'success' : 'danger'}} alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <h5><i class="icon fas fa-ban"></i>Alert!</h5>
+            <h5><i class="fa fa-check" aria-hidden="true"></i> Success</h5>
             <b>{{session('success')}}</b>
+          </div>
+        </div>
+        @endif
+        @if(session()->has('danger'))
+        <div class="col-md-4 position-absolute show-alert" style="z-index: 9999 !important;top:5px !important;right:5px;">
+          <div class="alert alert-{{session()->has('success') ? 'success' : 'danger'}} alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-minus-circle" aria-hidden="true"></i> Success</h5>
+            <b>{{session('danger')}}</b>
           </div>
         </div>
         @endif

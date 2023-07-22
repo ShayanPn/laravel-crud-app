@@ -7,7 +7,7 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <h4 class="login-box-msg">SignIn</h4>
+      <h4 class="login-box-msg"><span class="badge bg-secondary">SignIn</span></h4>
 
       <form action="" method="POST">
         @csrf
@@ -43,7 +43,7 @@
 
 <hr>
       <p class="mb-1">
-        <a href="#"><i class="fa fa-key" aria-hidden="true"></i> I Forgot My Password</a>
+        <a href="{{route('forgotpassword.get')}}"><i class="fa fa-key" aria-hidden="true"></i> I Forgot My Password</a>
       </p>
       <p class="mb-0">
         <a href="{{route('register')}}" class="text-center"><i class="fa fa-user-plus" aria-hidden="true"></i> Register A New Membership</a>

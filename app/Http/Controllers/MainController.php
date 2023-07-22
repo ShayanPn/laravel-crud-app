@@ -14,13 +14,14 @@ class MainController extends Controller
 
     // Show Records Page
     public function showRecordPage(){
-        $records = Record::orderBy('created_at','desc')->paginate(5);
+        $records = Record::orderBy('created_at','desc')->paginate(10);
         return view('records',['records' => $records]);
     }
 
     // Show Dashboard Page
     public function showDashboardPage(){
-        return view('dashboard');
+        $records = Record::orderBy('created_at','desc')->paginate(5);
+        return view('dashboard',['records'=> $records]);
     }
 
     // Show Login Page
