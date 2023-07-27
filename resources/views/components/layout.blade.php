@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -41,12 +41,7 @@
           <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
           </li>
-          <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
-          </li>
-          <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
-          </li>
+
         </ul>
     
         <!-- Right navbar links -->
@@ -99,11 +94,12 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-              <img src="{{url('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+              <img src="{{auth()->check() ? asset(auth()->user()->avatar): url('avatars/avatar.png')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-              <a href="#" class="d-block">@auth {{auth()->user()->fullname}} @endauth</a>
+              <a href="#" class="d-block">{{auth()->check() ? auth()->user()->fullname : 'Name'}}</a>
             </div>
+            @auth<form action="{{route('logout')}}" method="POST">@csrf<div  class="nav-item  ml-4"><button type="submit" class="btn text-white"><i class="nav-icon fa fa-sign-out" aria-hidden="true"></i></button></form></div>@endauth
           </div>
           <!-- Sidebar Menu -->
           <nav class="mt-2">
@@ -111,7 +107,7 @@
               <!-- Add icons to the links using the .nav-icon class
                    with font-awesome or any other icon font library -->   
               <li class="nav-item">
-                <a href="{{route('Dashboard')}}" class="nav-link {{ Route::is('Dashboard') ? 'active' : ''}} ">
+                <a href="{{route('dashboard')}}" class="nav-link {{ Route::is('dashboard') ? 'active' : ''}} ">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>
                     Dashboard
@@ -127,7 +123,7 @@
                 </a>
               </li>  
               <li class="nav-item">
-                <a href="{{route('Records')}}" class="nav-link {{ Route::is('Records') ? 'active' : ''}}">
+                <a href="{{route('records')}}" class="nav-link {{ Route::is('records') ? 'active' : ''}}">
                   <i class="nav-icon fa fa-address-book" aria-hidden="true"></i>
                   <p>
                     Records
@@ -152,7 +148,7 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">{{ucfirst(Route::currentRouteName())}}</h1>
+                <h1 class="m-0"><span class="badge bg-secondary">{{ucfirst(Route::currentRouteName())}}</span></h1>
               </div><!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -201,10 +197,9 @@
 </div>
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-<strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-All rights reserved.
+<strong>LaravelCRUD <span>Powered By Laravel & AdminLTE</span>
 <div class="float-right d-none d-sm-inline-block">
-<b>Version</b> 3.2.0
+<b>Version</b> 1.0
 </div>
 </footer>
 

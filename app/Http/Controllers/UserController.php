@@ -13,6 +13,21 @@ use Illuminate\Validation\Rules\Exists;
 
 class UserController extends Controller
 {
+    public function deleteUserFunc(User $id){
+        $id->delete();
+        return redirect('users')->with('danger','User Successfully Deleted');
+    }
+    public function showDeleteUserPage(User $id){
+        return view('delete-user',['user' => $id]);
+    }
+
+    public function showUpdateUser(User $id){
+        return view('update-user',['user' => $id]);
+    }
+
+    public function showSingleViewUser(User $id){
+        return view('user-single-view',['user' => $id]);
+    }
 
     public function showUsersPage(){
         $users = User::orderBy('created_at','desc')->paginate(10);
@@ -46,12 +61,9 @@ class UserController extends Controller
             return back()->with('danger','Email Does\'nt Exist!');
         }
 
-
-
-
-        
     }
 
+    // Reset Password Function
     public function resetPasswordFunc(Request $request){
         $request->validate([
             'email' => 'required|email|exists:users',
@@ -73,7 +85,7 @@ class UserController extends Controller
                             ->delete();
         return redirect('/login')->with('success','Your Password Has Been Change!');
     }
-
+    // Show Reset Password Page
     public function showResetPasswordPage($token){
         return view('reset-password',['token' => $token]);
     }
@@ -83,15 +95,21 @@ class UserController extends Controller
         return view('forgot-password');
     }
 
+    // Logout
+    public function logoutFunc(){
+        auth()->logout();
+        return redirect('/login')->with('danger','You\'ve LoggedOut Successfully');
+    }
+
     // Login User Function
     public function loginFunc(Request $request){
-        $incoommingFields = $request->validate([
+        $incommingFields = $request->validate([
             'email' => 'required',
             'password' => 'required'
         ]);
-        if(auth()->attempt($incoommingFields)){
+        if(auth()->attempt(['email' => $incommingFields['email'],'password' => $incommingFields['password'] ])){
             session()->regenerate();
-            return 'User LoggedIn Successfully';
+            return redirect('/')->with('success','User LoggedIn Successfully');
         }else{
             return 'Email / Password Incorrect';
         }
@@ -100,13 +118,26 @@ class UserController extends Controller
 
     // Register User Function
     public function registerFunc(Request $request){
-        $incommingFields = $request->validate([
+        $request->validate([
             'fullname' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|confirmed|min:6',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        User::create($incommingFields);
-        return 'Record Succesfully Created';
+
+        $user = new User;
+        $user->fullname = $request->input('fullname');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        if($request->hasFile('avatar')){
+            $filename ='avatars/' .  time() . '.'. $request->file('avatar')->getClientOriginalExtension();
+            $request->avatar->move(public_path('avatars'), $filename);
+            $user->avatar = $filename;
+        }
+
+        $user->save();
+
+        return redirect('/login')->with('success','User Successfully Created');
 
     }
 }

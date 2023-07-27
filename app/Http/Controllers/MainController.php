@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Record;
 use Illuminate\Http\Request;
 
@@ -21,16 +22,24 @@ class MainController extends Controller
     // Show Dashboard Page
     public function showDashboardPage(){
         $records = Record::orderBy('created_at','desc')->paginate(5);
-        return view('dashboard',['records'=> $records]);
+        $allrecords = Record::all();
+        $allusers = User::all();
+        return view('dashboard',['records'=> $records,'allusers' => $allusers,'allrecords' => $allrecords]);
     }
 
     // Show Login Page
     public function showLoginPage(){
+        if(auth()->check()){
+            return redirect('/')->with('danger','You Muste Be Logged Out First');
+        }
         return view('login');
     }
 
     // Show Register Page
     public function showRegisterPage(){
+        if(auth()->check()){
+            return redirect('/')->with('danger','You Muste Be Logged Out First');
+        }
         return view('register');
     }
 }

@@ -19,13 +19,18 @@
                     </tr>
                     </thead>
                     <tbody>
+                      @if($users->count() === 0)
+                      <tr>
+                        <td colspan="8">No Records Found...</td>
+                      </tr>
+                      @endif
                     @foreach ($users as $user)
                     <tr>
                       <td>{{$user->fullname}}</td>
                       <td>{{$user->email}}</td>
-                      <td>{{$user->avatar}}</td>
+                      <td><div class="text-center"><img width="50px" src="{{asset($user->avatar)}}" alt=""></div></td>
                       <td>{{$user->created_at}}</td>
-                      <td><a  class="text-primary" href="/record/{{$user->id}}"><i class="nav-icon fa fa-eye" aria-hidden="true"></i></a><a  class="mx-3 text-success" href="/record/update/{{$user->id}}"><i class="nav-icon fa fa-wrench" aria-hidden="true"></i></a><a class="text-danger" href="/record/delete/{{$user->id}}"><i class="nav-icon fa fa-trash" aria-hidden="true"></i></a></td>
+                      <td><a  class="text-primary mx-4" href="/user/{{$user->id}}"><i class="nav-icon fa fa-eye" aria-hidden="true"></i></a></a><a class="text-danger" href="user/delete/{{$user->id}}"><i class="nav-icon fa fa-trash" aria-hidden="true"></i></a></td>
                     </tr>
                     @endforeach
 

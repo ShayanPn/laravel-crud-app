@@ -11,7 +11,7 @@ class RecordController extends Controller
     // Delete Record Function
     public function deleteRecordFunc(Record $record){
         $record->delete();
-        return redirect('/records')->with('success','Record Succesfully Deleted');
+        return redirect('/')->with('success','Record Succesfully Deleted');
     }
 
     // Show Delete Page

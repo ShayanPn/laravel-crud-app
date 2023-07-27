@@ -1,5 +1,10 @@
 <x-layout>
     <section class="content">
+      @error('name') <p class="badge bg-danger">{{$message}}</p> @enderror
+      @error('email') <p class="badge bg-danger">{{$message}}</p> @enderror
+      @error('job') <p class="badge bg-danger">{{$message}}</p> @enderror
+      @error('age') <p class="badge bg-danger">{{$message}}</p> @enderror
+      @error('address') <p class="badge bg-danger">{{$message}}</p> @enderror
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
@@ -21,6 +26,11 @@
                     </tr>
                     </thead>
                     <tbody>
+                      @if($records->count() === 0)
+                      <tr>
+                        <td colspan="8">No Records Found...</td>
+                      </tr>
+                      @endif
                     @foreach ($records as $record)
                     <tr>
                       <td>{{$record->name}}</td>

@@ -9,7 +9,7 @@
     <div class="card-body register-card-body">
       <h4 class="login-box-msg"><span class="badge bg-secondary">SignUp</span></h4>
 
-      <form action="" method="POST">
+      <form action="" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
         <div class="input-group mb-3">
@@ -47,6 +47,18 @@
             </div>
           </div>
         </div>
+        <div class="form-group">
+          <label for="exampleInputFile">Upload Avatar</label>
+          <div class="input-group">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="exampleInputFile" name="avatar">
+              <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+            </div>
+          </div>
+        </div>
+
+        @error('avatar') <p class="badge bg-danger">{{$message}}</p> @enderror
+
         <div class="row d-flex flex-row justify-content-center">
           <!-- /.col -->
           <div class="col-4">
@@ -63,12 +75,7 @@
 </div>
 <!-- /.register-box -->
 
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
+
 </body>
 </html>
 </x-noside>
