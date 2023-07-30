@@ -111,7 +111,7 @@ class UserController extends Controller
             session()->regenerate();
             return redirect('/')->with('success','User LoggedIn Successfully');
         }else{
-            return 'Email / Password Incorrect';
+            return redirect('/login)->with('danger','Email / Password Incorrect');
         }
     }
 
